@@ -2,6 +2,7 @@
 ## Installation
 
 1. Clone the repository
+   git clone https://github.com/dinesh1299/url_shortner.git
    cd url_shortener
 
 2. Set Up Virtual Environment
