@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>URL Shortener</title>
+</head>
+<body>
+    <h1>URL Shortener</h1>
+    <form method="POST" action="{% url 'shorten' %}">
+        {% csrf_token %}
+        <label>Original URL:</label><br>
+        <input type="text" name="original_url" required><br>
+        <label>Expires In (hours):</label><br>
+        <input type="number" name="expires_in" min="1"><br><br>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

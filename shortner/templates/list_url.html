@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+    table, th, td {
+        border: 1px solid black;
+    }
+</style>
+
+<head>
+    <title>URL Shortener</title>
+</head>
+
+<body>
+    <h1>URL List</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>S.No</th>
+                <th>Original Url</th>
+                <th>Short URL</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for url in url_list %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ url.original_url }}</td>
+                <td>{{ url.shortend_url }}</td>
+                <td>{{ url.is_expired }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+
+</html>
