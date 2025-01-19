@@ -17,7 +17,10 @@ def shorten(request):
                 return JsonResponse({"success": False, "message": "Invalid original url"})
             short_url = generate_short_url(original_url, request)
             expires_at = generate_expires_at(int(request.POST.get("expires_in", None) or 24))
-            url.objects.create(original_url=original_url, shortend_url=short_url, expires_at=expires_at)
+            method_name = "create"
+            if url.objects.filter(original_url=original_url).exists():
+                method_name = "update"
+            getattr(url.objects, method_name)(original_url=original_url, shortend_url=short_url, expires_at=expires_at)
             return JsonResponse({"success": True, "message": f"Shortend url for {original_url} is {short_url}"})
         return JsonResponse({"success": False, "message": "Method not allowed"})
     except Exception as e:
